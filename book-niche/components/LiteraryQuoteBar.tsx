@@ -75,24 +75,12 @@ export function LiteraryQuoteBar() {
   if (!quote) return null;
 
   return (
-    <footer className="w-full px-4 py-4">
+    <footer className="w-full border-t border-[var(--border)] bg-[var(--background-soft)]/70 backdrop-blur-sm px-4 py-4">
       <p className="max-w-4xl mx-auto text-center font-serif italic text-sm text-[var(--foreground-muted)] leading-relaxed">
-        <span
-          className="text-[var(--sakura-deep)] not-italic mr-0.5"
-          aria-hidden
-        >
-          ❝
-        </span>
+        <span className="text-[var(--sakura-deep)] not-italic mr-0.5" aria-hidden>❝</span>
         {quote.text}
-        <span
-          className="text-[var(--sakura-deep)] not-italic ml-0.5"
-          aria-hidden
-        >
-          ❞
-        </span>
-        <span className="not-italic font-medium text-xs ml-2">
-          — {quote.attribution}
-        </span>
+        <span className="text-[var(--sakura-deep)] not-italic ml-0.5" aria-hidden>❞</span>
+        <span className="not-italic font-medium text-xs ml-2">— {quote.attribution}</span>
       </p>
     </footer>
   );

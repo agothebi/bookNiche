@@ -273,8 +273,8 @@ export function SearchBuilder({
 
         {/* Frosted-glass dropdown: tropes + sliders */}
         {browseOpen && (
-          <div className="absolute left-0 right-0 top-full mt-2 z-50 rounded-2xl border border-[var(--border)] bg-white/70 backdrop-blur-xl shadow-xl shadow-rose-900/10 overflow-hidden">
-            <div className="p-4 sm:p-5 max-h-[min(70vh,28rem)] overflow-y-auto">
+          <div className="absolute left-0 right-0 top-full mt-2 z-50 rounded-2xl border border-[var(--border)] bg-white/70 backdrop-blur-xl shadow-xl shadow-rose-900/10 max-h-[calc(100vh-20rem)] overflow-y-auto overscroll-contain">
+            <div className="p-4 sm:p-5 pb-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                 <div className="space-y-3">
                   <h2 className="font-serif text-base font-medium text-[var(--foreground)]">
