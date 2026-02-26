@@ -45,3 +45,18 @@ body {
 .animate-in {
   animation: fade-in 0.5s ease-out forwards;
 }
+
+/* Hero heading: Sakura → Mikan gradient */
+.text-gradient-hero {
+  background: linear-gradient(
+    135deg,
+    var(--sakura-deep) 0%,
+    var(--sakura) 35%,
+    var(--mikan) 70%,
+    var(--mikan) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

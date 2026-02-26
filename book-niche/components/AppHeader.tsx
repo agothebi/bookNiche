@@ -16,8 +16,8 @@ export function AppHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+    <header className="sticky top-0 z-20 bg-[var(--background)]/95 backdrop-blur-sm">
+      <div className="flex h-16 w-full items-center justify-between px-6 sm:px-10">
         <Link
           href="/"
           className="flex items-center gap-2 font-serif text-xl font-semibold text-[var(--foreground)] hover:text-[var(--sakura-deep)] transition"
@@ -31,14 +31,14 @@ export function AppHeader() {
         <nav className="flex items-center gap-4">
           <Link
             href="/wishlist"
-            className="text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition"
+            className="text-sm font-semibold text-[var(--foreground)] hover:text-[var(--sakura-deep)] transition"
           >
             Wishlist
           </Link>
           <button
             type="button"
             onClick={handleSignOut}
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-[var(--foreground-muted)] hover:bg-[var(--sakura)]/10 hover:text-[var(--sakura-deep)] transition"
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--sakura)]/10 hover:text-[var(--sakura-deep)] transition"
             aria-label="Sign out"
           >
             <LogOut className="w-4 h-4" strokeWidth={1.5} />
