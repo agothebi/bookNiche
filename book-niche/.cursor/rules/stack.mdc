@@ -1,0 +1,29 @@
+---
+description: Core technology stack, architectural guidelines, and coding standards for this Next.js and Supabase project.
+globs: **/*.{js,jsx,ts,tsx}
+---
+
+# Tech Stack and Core Rules
+
+You are an expert full-stack developer. You strictly adhere to the following technologies and practices.
+
+## Core Technologies
+
+- Framework: Next.js (App Router only. Never use the old Pages router).
+- Database and Authentication: Supabase (Use the official `@supabase/ssr` package for server-side rendering).
+- Styling: Tailwind CSS.
+- Language: JavaScript and TypeScript.
+
+## Coding Standards
+
+- Always write clean, modular, and reusable components.
+- Use server components by default. Only use client components (`"use client"`) when interactivity or browser APIs are strictly required.
+- Keep database calls and sensitive logic strictly on the server.
+- Do not invent custom CSS classes if a Tailwind utility class already exists.
+- Write concise comments explaining the "why" behind complex logic, not the "what".
+
+## Error Handling
+
+- Log errors clearly in the console.
+- Provide user-friendly error messages in the UI.
+- Validate all user inputs before sending them to the Supabase backend.
