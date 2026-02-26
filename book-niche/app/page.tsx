@@ -16,7 +16,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col flex-1">
       <AppHeader />
-      <main className="flex-1 relative overflow-hidden">
+      <main className="flex-1 relative overflow-x-hidden">
         {/* Ambient background */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
           <div className="absolute top-0 -left-24 w-72 h-72 rounded-full bg-[var(--sakura)]/6 blur-3xl" />
