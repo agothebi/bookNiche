@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
+/* BookNiche — Sakura / Japanese-inspired palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff1f2;
+  --background-soft: #fef2f2;
+  --foreground: #44403c;
+  --foreground-muted: #78716c;
+  --sakura: #fb7185;
+  --sakura-deep: #f43f5e;
+  --mikan: #fb923c;
+  --mikan-soft: #fed7aa;
+  --border: #fecdd3;
+  --ring: #fb7185;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-sakura: var(--sakura);
+  --color-sakura-deep: var(--sakura-deep);
+  --color-mikan: var(--mikan);
+  --color-mikan-soft: var(--mikan-soft);
+  --color-border: var(--border);
+  --font-sans: var(--font-nunito);
+  --font-serif: var(--font-cormorant);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation: fade-in 0.5s ease-out forwards;
 }
