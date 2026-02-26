@@ -183,7 +183,8 @@ export function SearchBuilder({
       {/* Premium editorial header */}
       <div className="text-center mb-10 sm:mb-12">
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight mb-3 text-[var(--foreground)]">
-          Find your next <em className="italic text-[var(--sakura-deep)]">obsession.</em>
+          Find your next{" "}
+          <em className="italic text-[var(--sakura-deep)]">obsession.</em>
         </h1>
         <p className="text-sm sm:text-base text-[var(--foreground-muted)] font-medium max-w-md mx-auto">
           Discover books by the feelings they give you, not just the genre.
@@ -193,7 +194,7 @@ export function SearchBuilder({
       {/* Pill search bar + filters + inline submit */}
       <div className="relative" ref={browseRef}>
         <div
-          className="min-h-[6rem] rounded-full border border-[var(--border)] bg-white shadow-lg shadow-rose-900/10 focus-within:shadow-xl focus-within:shadow-rose-500/15 focus-within:border-[var(--sakura)]/60 flex flex-wrap items-center gap-2 sm:gap-3 pl-5 pr-2 py-4 sm:pl-6 sm:pr-2 sm:py-5 transition-shadow duration-200"
+          className="min-h-[6rem] rounded-4xl sm:rounded-full border border-[var(--border)] bg-white shadow-lg shadow-rose-900/10 focus-within:shadow-xl focus-within:shadow-rose-500/15 focus-within:border-[var(--sakura)]/60 flex flex-wrap items-center gap-2 sm:gap-3 pl-5 pr-2 py-4 sm:pl-6 sm:pr-2 sm:py-5 transition-shadow duration-200"
           role="search"
         >
           <Search
@@ -231,6 +232,7 @@ export function SearchBuilder({
                 value={inputValue}
                 onChange={handleSearchChange}
                 onKeyDown={handleSearchKeyDown}
+                onFocus={() => setBrowseOpen(true)}
                 placeholder="Type a trope or vibe…"
                 className="flex-1 min-w-0 bg-transparent text-[var(--foreground)] placeholder:text-[var(--foreground-muted)] focus:outline-none py-2 text-lg sm:text-xl"
               />

@@ -46,6 +46,23 @@ body {
   animation: fade-in 0.5s ease-out forwards;
 }
 
+/* Glow pulse for loading state */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 6px var(--sakura));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px var(--sakura)) drop-shadow(0 0 30px var(--mikan));
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
 /* Hero heading: Sakura → Mikan gradient */
 .text-gradient-hero {
   background: linear-gradient(

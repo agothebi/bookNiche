@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Nunito, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { LiteraryQuoteBar } from "@/components/LiteraryQuoteBar";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -32,8 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${nunito.variable} ${geistMono.variable}`}>
-      <body className="min-h-screen antialiased font-sans">
-        {children}
+      <body className="min-h-screen flex flex-col antialiased font-sans">
+        <div className="flex-1">
+          {children}
+        </div>
+        <LiteraryQuoteBar />
       </body>
     </html>
   );

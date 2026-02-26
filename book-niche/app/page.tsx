@@ -14,7 +14,7 @@ export default async function HomePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col flex-1">
       <AppHeader />
       <main className="flex-1 relative overflow-hidden">
         {/* Ambient background */}
@@ -23,7 +23,7 @@ export default async function HomePage() {
           <div className="absolute bottom-0 -right-24 w-80 h-80 rounded-full bg-[var(--mikan)]/8 blur-3xl" />
         </div>
 
-        <div className="relative z-10 flex min-h-[calc(100vh-4rem)] flex-col items-center justify-start pt-8 sm:pt-12 px-4 pb-8">
+        <div className="relative z-10 flex flex-col items-center justify-start pt-8 sm:pt-12 px-4 pb-8">
           <SearchBuilderWrapper />
         </div>
       </main>
