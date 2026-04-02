@@ -16,7 +16,7 @@ export default function LoginPage() {
       <div className="relative z-10 w-full flex flex-col items-center">
         <LoginForm />
         <p className="mt-8 text-xs text-[var(--foreground-muted)] max-w-xs text-center">
-          By continuing, you agree to enter our library. We'll only use your
+          By continuing, you agree to enter our library. We&apos;ll only use your
           email to sign you in and curate your experience.
         </p>
       </div>

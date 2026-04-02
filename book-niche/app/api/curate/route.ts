@@ -139,7 +139,7 @@ function isBookRecommendation(value: unknown): value is BookRecommendation {
 
 function isAIResponse(value: unknown): value is AIResponse {
   if (!value || typeof value !== "object") return false;
-  const v = value as any;
+  const v = value as Record<string, unknown>;
   if (v.type === "clarification") {
     // Gemini may include an empty books array alongside the question; accept both forms
     return typeof v.question === "string";
@@ -161,11 +161,20 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json().catch(() => null);
-    const tags = (body as { tags?: unknown })?.tags;
+    const body: unknown = await request.json().catch(() => null);
+    const tags =
+      body !== null &&
+      typeof body === "object" &&
+      "tags" in body
+        ? (body as { tags: unknown }).tags
+        : undefined;
     const clarificationAnswer =
-      typeof (body as any)?.clarificationAnswer === "string"
-        ? (body as any).clarificationAnswer.trim()
+      body !== null &&
+      typeof body === "object" &&
+      "clarificationAnswer" in body &&
+      typeof (body as { clarificationAnswer: unknown }).clarificationAnswer ===
+        "string"
+        ? (body as { clarificationAnswer: string }).clarificationAnswer.trim()
         : null;
 
     if (!Array.isArray(tags) || tags.some((t) => typeof t !== "string")) {
@@ -241,7 +250,7 @@ export async function POST(request: Request) {
     let parsed: unknown;
     try {
       parsed = JSON.parse(raw);
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         {
           error: "Failed to parse Gemini JSON response.",

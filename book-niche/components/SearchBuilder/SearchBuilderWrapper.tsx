@@ -29,10 +29,15 @@ export function SearchBuilderWrapper() {
         });
 
         if (!res.ok) {
-          const data = await res.json().catch(() => ({}));
-          throw new Error(
-            (data as any)?.error ?? `API error: ${res.status}`,
-          );
+          const data: unknown = await res.json().catch(() => ({}));
+          const message =
+            typeof data === "object" &&
+            data !== null &&
+            "error" in data &&
+            typeof (data as { error: unknown }).error === "string"
+              ? (data as { error: string }).error
+              : `API error: ${res.status}`;
+          throw new Error(message);
         }
 
         return (await res.json()) as AIResponse;
@@ -131,7 +136,7 @@ export function SearchBuilderWrapper() {
           <div className="flex items-center gap-2 text-[var(--sakura-deep)] mb-1">
             <Sparkles className="w-5 h-5" strokeWidth={1.5} />
             <span className="text-xs font-semibold uppercase tracking-wider">
-              Curator's Question
+              Curator&apos;s Question
             </span>
           </div>
           <p className="font-serif text-xl sm:text-2xl text-[var(--foreground)] leading-snug">

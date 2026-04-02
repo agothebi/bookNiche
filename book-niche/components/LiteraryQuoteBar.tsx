@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const QUOTES: { text: string; attribution: string }[] = [
   {
@@ -65,14 +65,12 @@ const QUOTES: { text: string; attribution: string }[] = [
   },
 ];
 
+function pickRandomQuote() {
+  return QUOTES[Math.floor(Math.random() * QUOTES.length)];
+}
+
 export function LiteraryQuoteBar() {
-  const [quote, setQuote] = useState<(typeof QUOTES)[number] | null>(null);
-
-  useEffect(() => {
-    setQuote(QUOTES[Math.floor(Math.random() * QUOTES.length)]);
-  }, []);
-
-  if (!quote) return null;
+  const [quote] = useState(pickRandomQuote);
 
   return (
     <footer className="w-full border-t border-[var(--border)] bg-[var(--background-soft)]/70 backdrop-blur-sm px-4 py-4">

@@ -5,6 +5,21 @@ import { Search, X, ArrowRight, SlidersHorizontal } from "lucide-react";
 import { TROPE_CATEGORIES, SLIDER_CONFIGS } from "@/lib/search-config";
 import type { SliderConfig } from "@/lib/types";
 
+function deriveSliderValuesFromTags(tagList: string[]): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const config of SLIDER_CONFIGS) {
+    for (let v = config.min; v <= config.max; v++) {
+      const label = config.valueLabels[v - config.min];
+      if (tagList.includes(label)) {
+        out[config.id] = v;
+        break;
+      }
+    }
+    if (out[config.id] == null) out[config.id] = config.min;
+  }
+  return out;
+}
+
 const CURATED_VIBES: { title: string; tags: string[] }[] = [
   {
     title: "The Royal Betrayal",
@@ -51,13 +66,6 @@ export function SearchBuilder({
   );
 
   useEffect(() => {
-    if (initialTags.length > 0) {
-      setTags(initialTags);
-      setSliderValues(deriveSliderValuesFromTags(initialTags));
-    }
-  }, [initialTags.join(",")]);
-
-  useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (
         browseOpen &&
@@ -70,23 +78,6 @@ export function SearchBuilder({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [browseOpen]);
-
-  function deriveSliderValuesFromTags(
-    tagList: string[],
-  ): Record<string, number> {
-    const out: Record<string, number> = {};
-    for (const config of SLIDER_CONFIGS) {
-      for (let v = config.min; v <= config.max; v++) {
-        const label = config.valueLabels[v - config.min];
-        if (tagList.includes(label)) {
-          out[config.id] = v;
-          break;
-        }
-      }
-      if (out[config.id] == null) out[config.id] = config.min;
-    }
-    return out;
-  }
 
   function addTag(tag: string) {
     const t = tag.trim();
@@ -263,7 +254,7 @@ export function SearchBuilder({
               type="button"
               onClick={() => onSubmit(tags)}
               disabled={tags.length === 0}
-              aria-label="Submit search"
+              aria-label={submitLabel}
               className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-[var(--sakura-deep)] text-white shadow-sm hover:bg-[var(--sakura-deep)]/90 disabled:opacity-50 disabled:pointer-events-none transition"
             >
               <ArrowRight className="w-5 h-5" strokeWidth={2} />
